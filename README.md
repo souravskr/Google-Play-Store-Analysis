@@ -80,7 +80,7 @@ Examples:
 
 `kaggle datasets download zillow/zecon`
 
-`kaggle datasets download zillow/zecon -f State_time_series.csv`
+`kaggle datasets download zillow/zecon -f State\_time\_series.csv`
 
 Please note that BigQuery datasets cannot be downloaded.
 
