@@ -48,11 +48,12 @@
 
 
 
-
+import argparse
+import requests
 
 import kaggle
 print("Downloading Kaggle Database")
-kaggle datasets download lava18/google-play-store-apps  --unzip -p /tmp
+#kaggle datasets download lava18/google-play-store-apps  --unzip -p /tmp
 
 
 
