@@ -50,11 +50,21 @@
 
 import argparse
 import requests
-
 import kaggle
-print("Downloading Kaggle Database")
-#kaggle datasets download lava18/google-play-store-apps  --unzip -p /tmp
 
+
+print("Downloading Kaggle Database")
+kaggle datasets download lava18/google-play-store-apps  --unzip -p /tmp
+
+
+### Optional arguments ###
+import argparse
+parser = argparse.ArgumentParser(description="This is a simple script to download Kaggle datasets. \nIt is important to have a kaggle account for the script to work.", epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
+group = parser.add_mutually_exclusive_group()
+
+
+parser.add_argument("-c", "--compressed", action="store_true", help="Downloads the compressed files from Kaggle")
+parser.add_argument("-o", "--output", action="store_true" , help="")
 
 
 
