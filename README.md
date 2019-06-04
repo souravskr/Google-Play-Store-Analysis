@@ -12,7 +12,11 @@ Installing the Kaggle API is as simple as
 `pip install kaggle`
 Or you can download the source code directly from the aboved mentioned link. 
 
+After the kaggle module has been downloaded, you need to set up a kaggle account, and download your credentials to be able to download datasets.  The steps required to download the credentials can be found in the [Kaggle's API github](https://github.com/Kaggle/kaggle-api). However, we have copied the instructions in further sections of this readme file. 
 
+The command to download our data set after you configure your credentials is
+`kaggle datasets download lava18/google-play-store-apps`
+The above command will download a zip file. 
 
 
 
