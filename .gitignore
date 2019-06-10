@@ -1,5 +1,5 @@
 .DS_Store
-bin
-include
-lib
-share
+./bin
+./include
+./lib
+./share
