@@ -61,12 +61,13 @@ def printValues():
     print(osVerdf)
     print("#######################################################################################")
 
-histogram, axes = plt.subplots(3,3) # Create a figure
+#histogram, axes = plt.subplots(3,3) # Create a figure
 print(categorydf)
 #input("Press CTRL+C here")
-axes[0,0] = categorydf.plot(kind="bar")
+categorydf.plot(kind="bar", label='Number of Apps', )
 plt.tight_layout() # adjusting the location of axes
-
+plt.ylabel('Number of Apps')
+plt.legend().remove()
 plt.show()
 
 
