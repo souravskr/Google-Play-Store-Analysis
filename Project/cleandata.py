@@ -7,7 +7,7 @@ import pandas as pd
 import seaborn as sns
 import datetime 
 # Libraries to graph functions
-import matplotlib
+#import matplotlib
 
 parser = argparse.ArgumentParser(description="""\
 This is a simple script to manually clean the data from the lava18/google-play-store-apps dataset from Kaggle.
