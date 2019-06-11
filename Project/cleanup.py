@@ -39,12 +39,12 @@ def blankClean():
     print("Number of 'reviews' modified: ",data1[data1['reviews'] == 'NA'].shape[0])
     print("Number of 'size' modified: ",data1[data1['size'] == 'NA'].shape[0])
     print("Number of 'installs' modified: ",data1[data1['installs'] == 'NA'].shape[0])
-    print("Number of 'type' modified: ",data1[data1['type'] == 'NA'].shape[0])
+    #print("Number of 'type' modified: ",data1[data1['type'] == 'NA'].shape[0])
     print("Number of 'price' modified: ",data1[data1['price'] == 'NA'].shape[0])
     print("Number of 'rated' modified: ",data1[data1['rated'] == 'NA'].shape[0])
-    print("Number of 'genres' modified: ",data1[data1['genres'] == 'NA'].shape[0])
+    #print("Number of 'genres' modified: ",data1[data1['genres'] == 'NA'].shape[0])
     print("Number of 'lastUpdated' modified: ",data1[data1['lastUpdated'] == 'NA'].shape[0])
-    print("Number of 'appVer' modified: ",data1[data1['appVer'] == 'NA'].shape[0])
+    #print("Number of 'appVer' modified: ",data1[data1['appVer'] == 'NA'].shape[0])
     print("Number of 'osVer' modified: ",data1[data1['osVer'] == 'NA'].shape[0])
     
 
@@ -66,6 +66,24 @@ def intFormat():
     data1['installs'] = data1['installs'].replace(',', '', regex = True)
     data1['installs'] = data1['installs'].astype(int)
 
+    data1['price'] = data1['price'].map(lambda x: x.lstrip('$'))
+    data1['price'] = data1['price'].replace(',', '', regex = True)
+    data1['price'] = data1['price'].astype(float)
+
+def remDuplicates():
+    print("Number of Duplicated samples: ",data1[data1.duplicated(['app'])].shape[0])
+    data1.drop_duplicates(subset=['app'], keep='first', inplace=True)
+    print("Total Samples: ",data1.shape[0])
+    print("Duplicate Data Samples have been succesfully removed")
+
+def remColumns():
+    """
+    The category Type is already implicit in the category labeled 'price'
+    The category Genre is already implicit in the category of 'category'
+    The category appVer has no real significance
+    """
+    data1.drop(['type','appVer', 'genres'], inplace=True, axis=1)
+    print("Total Columns: ",data1.shape[1])
 
 def toFile(output):
     data1.to_csv(output, index=False)
@@ -74,9 +92,11 @@ def toFile(output):
 if args.all:
     data1 = pd.read_csv('./Data/googleplaystore.csv' )
     labelClean()
-    blankClean()
+    remColumns()
     removeRow(10472)
+    blankClean()
     dateFormat()
+    remDuplicates()
     intFormat()
     toFile('cleanData.csv')
     #print(data1.columns)
