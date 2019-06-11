@@ -13,7 +13,8 @@ parser = argparse.ArgumentParser(description="""\
 This is a simple script to manually clean the data from the lava18/google-play-store-apps dataset from Kaggle.
 It will ONLY work with that data set. 
 """, epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
-parser.add_argument("-a", "--all", action="store_true", help="Performs all the clean-up functions in this script")
+parser.add_argument("-a", "--all", action="store_true", help="Performs all the clean-up functions in this script", default=True)
+parser.add_argument("-o", "--output", help="Select the output directory and file name. By default, it stores a file in the current directoy as cleanData.csv", default='cleanData.csv')
 args = parser.parse_args()
 
 
@@ -98,7 +99,7 @@ if args.all:
     dateFormat()
     remDuplicates()
     intFormat()
-    toFile('cleanData.csv')
+    toFile(args.output)
     #print(data1.columns)
     
 
