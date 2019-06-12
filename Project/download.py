@@ -64,21 +64,18 @@ It is important to have a kaggle account for the script to work.
 
 
 parser.add_argument("-u", "--uncompressed", action="store_true", help="Downloads the compressed files from Kaggle")
-parser.add_argument("-o", "--output", help="select the output directory for the files", default=".")
+parser.add_argument("-o", "--output", help="select the output directory for the files", default="./Data/")
 args = parser.parse_args()
-
 odirectory = args.output
+
+if os.path.isdir('./Data/') and odirectory == './Data/':
+    odirectory = '.'
 
 if args.uncompressed:
     os.system('kaggle datasets download lava18/google-play-store-apps --unzip -p '+odirectory)
 else:
     os.system('kaggle datasets download lava18/google-play-store-apps -p '+odirectory)
     #!kaggle datasets download lava18/google-play-store-apps -p args.o
-
-
-
-
-
 
 
 

@@ -2,6 +2,7 @@
 # Libraries to read optional parameters
 import argparse
 import os
+import sys
 
 # Libraries to clean the data
 import numpy as np
@@ -11,23 +12,32 @@ import datetime
 
 # Libraries to graph functions
 from matplotlib import pyplot as plt
-import matplotlib.colors as mcolors
+#import matplotlib.colors as mcolors
 import matplotlib
-
-# Library used in the random generation of colors
-import colorsys
 
 parser = argparse.ArgumentParser(description="""\
 IMPORTANT: Remember to run cleandata.py before running this script. It will not work otherwise.
 This programs is designed to generate basic 
 """, epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
-parser.add_argument("-i", "--input", help="Select the output directory and file name. By default, it stores a file in the current directoy as cleanData.csv", default='cleanData.csv')
+
+parser.add_argument("-i", "--input", help="Select the input directory and file name. By default, it searches for cleanData.csv in the current directoy", default='cleanData.csv')
+parser.add_argument("-v", "--verbose", help="increases verbosity of the output", action="count", default=0)
+parser.add_argument("-d", "--data", help="Save the figure and its corresponding data", action="store_true", default=False)
+parser.add_argument("-g", "--graphs", help="Enable this option to display the graphs after the figures have been processed", action="store_true", default=False)
+
+group = parser.add_mutually_exclusive_group()
+group.add_argument("-s", "--specific", help="specify which graph you wish to regenerate. The options are: category, reviews, rating, size, installs, price, rated, lastUpdated, osVer, and summary. Using a different keyword, or not filling in an option, will not do anything.", default='ignore')
+group.add_argument("-a", "--all", help="same as activating flags -v -d and -g", default=True, action="store_true")
+
 args = parser.parse_args()
 
+if args.all == True:
+    args.data = True
+    args.verbose=1
+    args.graphs=True
+
+
 inputFile = args.input
-basicData = pd.read_csv(inputFile)
-
-
 
 # print(basicData.columns)
 # 'app', 'category', 'rating', 'reviews', 'size', 'installs', 'price', 'rated', 'lastUpdated', 'osVer'
@@ -61,32 +71,21 @@ lastUpdateddf.reset_index(level=0, inplace=True)
 osVerdf = pd.read_csv(inputFile).groupby('osVer').agg(np.size).iloc[:,0:1]
 osVerdf.reset_index(level=0, inplace=True)
 
+def toFile(dataframe):
+    output = './Data/data_for_'+str(dataframe.columns[0])+'_figure.csv'
+    dataframe.to_csv(output, index=False)
+    if args.verbose == 1:
+        print("Output file ",output," has been generated")
 
-
-def printValues():
+def printdf(dataframe):
     print("#######################################################################################")
-    print(categorydf)
+    print(dataframe)
     print("#######################################################################################")
-    print(ratingdf)
-    print("#######################################################################################")
-    print(reviewsdf)
-    print("#######################################################################################")
-    print(sizedf)
-    print("#######################################################################################")
-    print(installsdf)
-    print("#######################################################################################")
-    print(pricedf)
-    print("#######################################################################################")
-    print(rateddf)
-    print("#######################################################################################")
-    print(lastUpdateddf)
-    print("#######################################################################################")
-    print(osVerdf)
-    print("#######################################################################################")
-
 
 def graphdf(dataframe):
-    print(dataframe)
+    dflabel = str(dataframe.columns[0])
+    if args.verbose == 1:
+        print("Generating "+dflabel+" figure")
     dflabel = str(dataframe.columns[0])
     dataframe.plot(x=dflabel,y='app',kind="bar")
     plt.legend().remove()
@@ -94,17 +93,6 @@ def graphdf(dataframe):
     manager = plt.get_current_fig_manager()
     manager.resize(*manager.window.maxsize())
     plt.savefig('./Data/'+dflabel+'_figure.png')
-
-
-graphdf(categorydf)
-graphdf(ratingdf)
-graphdf(reviewsdf)
-graphdf(sizedf)
-graphdf(installsdf)
-graphdf(pricedf)
-graphdf(rateddf)
-graphdf(lastUpdateddf)
-graphdf(osVerdf)
 
 def summary():
     """
@@ -119,9 +107,7 @@ def summary():
     Sub-Figure 8 = Number of Apps that have that were last updated on that given date
     Sub-Figure 9 = Number of Apps that have that work at least on the specified Android Version
     """
-    
     histogram, axes = plt.subplots(3,3) # Create a figure
-    
     
     axes[0,0].bar(categorydf['category'], categorydf['app'])
     axes[0,0].title.set_text('Categories')
@@ -163,7 +149,7 @@ def summary():
     manager = plt.get_current_fig_manager()
     manager.resize(*manager.window.maxsize())
     plt.savefig('./Data/Summary_figure.png')
-    plt.show()
+    #plt.show()
 
 #print(matplotlib.get_backend())
 #input("Stop")
@@ -183,4 +169,64 @@ def summary():
 #manager = plt.get_current_fig_manager()
 #manager.frame.Maximize(True)
 
-summary()
+dfs = [categorydf, ratingdf, reviewsdf, sizedf, installsdf, pricedf, rateddf, lastUpdateddf, osVerdf ] 
+saved = False
+savedata = args.data
+
+if args.specific == 'ignore':
+    if args.verbose == 1:
+        print('Using the '+inputFile+' file')
+        print('Printing all summarized dataframes')
+        for i in dfs:
+            printdf(i)
+            graphdf(i)
+            if savedata == True:
+                toFile(i)
+                saved=True
+        summary()
+    
+    else:
+        for i in dfs:
+            graphdf(i)
+            if savedata == True:
+                toFile(i)
+                saved=True
+        summary()
+
+elif args.specific == 'category':
+    graphdf(categorydf)
+
+elif args.specific == 'rating':
+    graphdf(ratingdf)
+
+elif args.specific == 'reviews':
+    graphdf(reviewsdf)
+
+elif args.specific == 'size':
+    graphdf(sizedf)
+
+elif args.specific == 'installs':
+    graphdf(installsdf)
+
+elif args.specific == 'price':
+    graphdf(pricedf)
+
+elif args.specific == 'rated':
+    graphdf(rateddf)
+
+elif args.specific == 'lastUpdated':
+    graphdf(lastUpdateddf)
+
+elif args.specific == 'osVer':
+    graphdf(osVerdf)
+
+elif args.specific == 'summary':
+    summary()
+
+else:
+    print('Wrong OPTION specified with the -s flag. Please select a valid option')
+    print('The options are: category, reviews, rating, size, installs, price, rated, lastUpdated, osVer, and summary ')
+    sys.exit(0)
+
+if args.graphs == True:
+    plt.show()
