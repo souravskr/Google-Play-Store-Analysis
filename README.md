@@ -4,6 +4,14 @@ This project focuses on the analysis of the Play Store data set in Kaggle obtain
 
 We want to use the data to analyze consumer trends and determine which apps are the most popular and profitable. 
 
+# Description Programs
+The following is a list of the scripts included in this project with a brief description about their functionality. It is also recommended that you ran the scripts in the order in which they are listed the first you work with this repository.
+
+1. download.py - This script downloads the necessary data. Please read the  *”Important Notes”* section to find out more about certain pre-requisites
+2. cleandata.py - After the data has been downloaded, and unzipped, this script will get rid of unnecessary fields, filter out erronous data points, and fill empty cells with the ‘NA’ keyword
+3. histograms.py - This script provides a preview of the data. It graphs each of the attributes against the number of apps. 
+
+All of the scripts have a _-h_ or _—-help_ option, which provides more details about their syntax, and additional options.
 
 
 # Important Notes
