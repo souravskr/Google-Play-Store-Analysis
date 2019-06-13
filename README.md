@@ -2,9 +2,14 @@
 
 This project focuses on the analysis of the Play Store data set in Kaggle obtained from the following [link](https://www.kaggle.com/lava18/google-play-store-apps)
 
-We want to use the data to analyze consumer trends and determine which apps are the most popular and profitable. 
+We want to use the data to analyze consumer trends and determine which type of apps are the most popular and profitable. 
 
-# Description Programs
+# Short Description
+
+All the scripts are inside the Project folder. Within the Folder, you will find an empty _Data_ folder, which is where the processed data will be stored. the _OrigData_ contains the data found in the Kaggle repository as a backup, should you not be able to download the repository from Kaggle, or should the data itself be removed from the Kaggle servers. 
+
+# Description of Scripts
+
 The following is a list of the scripts included in this project with a brief description about their functionality. It is also recommended that you ran the scripts in the order in which they are listed the first you work with this repository.
 
 1. download.py - This script downloads the necessary data. Please read the  *”Important Notes”* section to find out more about certain pre-requisites
