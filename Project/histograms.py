@@ -14,13 +14,21 @@ import datetime
 from matplotlib import pyplot as plt
 #import matplotlib.colors as mcolors
 import matplotlib
-matplotlib.use('TkAgg')
+
+#print(matplotlib.get_backend())
+backend='other'
+try:
+    matplotlib.use('TkAgg')
+    backend = 'TkAgg'
+except:
+    pass
+
 #print(matplotlib.get_backend())
 
 
 parser = argparse.ArgumentParser(description="""\
 IMPORTANT: Remember to run cleandata.py before running this script. It will not work otherwise.
-This programs is designed to generate basic 
+This programs is designed to generate basic graphs with the cleandata comparing the number of samples. It is also recommended to use TkAgg matplotlib background to generate prettier images. 
 """, epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
 
 parser.add_argument("-i", "--input", help="Select the input directory and file name. By default, it searches for cleanData.csv in the current directoy", default='cleanData.csv')
@@ -97,8 +105,9 @@ def graphdf(dataframe):
     dataframe.plot(x=dflabel,y='app',kind="bar")
     plt.legend().remove()
     plt.tight_layout() # adjusting the location of axes
-    manager = plt.get_current_fig_manager()
-    manager.resize(*manager.window.maxsize())
+    if backend=='TkAgg':
+        manager = plt.get_current_fig_manager()
+        manager.resize(*manager.window.maxsize())
     plt.savefig('./Data/'+dflabel+'_figure.png')
 
 def summary():
@@ -153,8 +162,9 @@ def summary():
     axes[2,2].set_xticklabels([])
     
     histogram.tight_layout() # adjusting the location of axes
-    manager = plt.get_current_fig_manager()
-    manager.resize(*manager.window.maxsize())
+    if backend=='TkAgg':
+        manager = plt.get_current_fig_manager()
+        manager.resize(*manager.window.maxsize())
     plt.savefig('./Data/Summary_figure.png')
     #plt.show()
 
@@ -179,7 +189,8 @@ def summary():
 #Qt5Agg
 #TkAgg
 
-dfs = [categorydf, ratingdf, reviewsdf, sizedf, installsdf, pricedf, rateddf, lastUpdateddf, osVerdf ] 
+#dfs = [categorydf, ratingdf, reviewsdf, sizedf, installsdf, pricedf, rateddf, lastUpdateddf, osVerdf ] 
+dfs = {'category':categorydf, 'reviews':reviewsdf, 'rating':ratingdf, 'size':sizedf, 'installs':installsdf, 'price':pricedf, 'rated':rateddf, 'lastUpdated':lastUpdateddf, 'osVer':osVerdf }
 saved = False
 savedata = args.data
 
@@ -188,47 +199,28 @@ if args.specific == 'ignore':
         print('Using the '+inputFile+' file')
         print('Printing all summarized dataframes')
         for i in dfs:
-            printdf(i)
-            graphdf(i)
+            printdf(dfs[i])
+            graphdf(dfs[i])
             if savedata == True:
-                toFile(i)
+                toFile(dfs[i])
                 saved=True
         summary()
     
     else:
         for i in dfs:
-            graphdf(i)
+            graphdf(dfs[i])
             if savedata == True:
-                toFile(i)
+                toFile(dfs[i])
                 saved=True
         summary()
 
-elif args.specific == 'category':
-    graphdf(categorydf)
-
-elif args.specific == 'rating':
-    graphdf(ratingdf)
-
-elif args.specific == 'reviews':
-    graphdf(reviewsdf)
-
-elif args.specific == 'size':
-    graphdf(sizedf)
-
-elif args.specific == 'installs':
-    graphdf(installsdf)
-
-elif args.specific == 'price':
-    graphdf(pricedf)
-
-elif args.specific == 'rated':
-    graphdf(rateddf)
-
-elif args.specific == 'lastUpdated':
-    graphdf(lastUpdateddf)
-
-elif args.specific == 'osVer':
-    graphdf(osVerdf)
+elif args.specific in dfs: 
+    graphdf(dfs[args.specific])
+    if savedata == True:
+        toFile(dfs[args.specific])
+    if args.verbose == 1:
+        printdf(dfs[args.specific])
+    sys.exit(0)
 
 elif args.specific == 'summary':
     summary()
@@ -240,3 +232,5 @@ else:
 
 if args.graphs == True:
     plt.show()
+
+
