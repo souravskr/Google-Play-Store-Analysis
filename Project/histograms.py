@@ -14,6 +14,9 @@ import datetime
 from matplotlib import pyplot as plt
 #import matplotlib.colors as mcolors
 import matplotlib
+matplotlib.use('TkAgg')
+#print(matplotlib.get_backend())
+
 
 parser = argparse.ArgumentParser(description="""\
 IMPORTANT: Remember to run cleandata.py before running this script. It will not work otherwise.
@@ -21,13 +24,16 @@ This programs is designed to generate basic
 """, epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
 
 parser.add_argument("-i", "--input", help="Select the input directory and file name. By default, it searches for cleanData.csv in the current directoy", default='cleanData.csv')
-parser.add_argument("-v", "--verbose", help="increases verbosity of the output", action="count", default=0)
 parser.add_argument("-d", "--data", help="Save the figure and its corresponding data", action="store_true", default=False)
 parser.add_argument("-g", "--graphs", help="Enable this option to display the graphs after the figures have been processed", action="store_true", default=False)
 
+group1 = parser.add_mutually_exclusive_group()
+group1.add_argument("-v", "--verbose", help="increases verbosity of the output", action="count", default=0)
+group1.add_argument("-q", "--quiet", help="reduces verbosity of the output", action="count", default=0)
+
 group = parser.add_mutually_exclusive_group()
 group.add_argument("-s", "--specific", help="specify which graph you wish to regenerate. The options are: category, reviews, rating, size, installs, price, rated, lastUpdated, osVer, and summary. Using a different keyword, or not filling in an option, will not do anything.", default='ignore')
-group.add_argument("-a", "--all", help="same as activating flags -v -d and -g", default=True, action="store_true")
+group.add_argument("-a", "--all", help="same as simultaneously activating flags -v, -d, and -g. This option will override any other flags", default=False, action="store_true")
 
 args = parser.parse_args()
 
@@ -35,6 +41,7 @@ if args.all == True:
     args.data = True
     args.verbose=1
     args.graphs=True
+
 
 
 inputFile = args.input
@@ -168,6 +175,9 @@ def summary():
 # WX backend
 #manager = plt.get_current_fig_manager()
 #manager.frame.Maximize(True)
+
+#Qt5Agg
+#TkAgg
 
 dfs = [categorydf, ratingdf, reviewsdf, sizedf, installsdf, pricedf, rateddf, lastUpdateddf, osVerdf ] 
 saved = False
