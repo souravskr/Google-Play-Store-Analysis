@@ -1,7 +1,8 @@
-.PHONY: newenv inlibraries basesetup clean
+.PHONY: newenv basesetup clean
 
 newenv:
-	virtualenv -p python3 cmsc6950_g1 && source ./bin/activate
+	pip install --user pipenv
+	pipenv install
 
 inlibraries:
 	pip install -r requirements.txt
