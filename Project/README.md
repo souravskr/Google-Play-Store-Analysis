@@ -4,9 +4,62 @@ This project focuses on the analysis of the Play Store data set in Kaggle obtain
 
 We want to use the data to analyze consumer trends and determine which type of apps are the most popular and profitable. 
 
+# Important Pre-requisites
+
+1. Python 3.7
+2. Pip (usually installed by default with Python 3)
+3. A Kaggle account ([More Information can be found here](https://www.kaggle.com/), and details about the configuration of the Kaggle certificates can be found in the _Kaggle Notes_ section contained within this README.md file ) 
+
+
+# Installation 
+
+There are 2 recommended ways to set up your environment to run the scripts, both of which will be described here.
+We are also assuming that you have already downloaded, or cloned, the repository, and have moved into the _Project_ directory.
+
+## Installation Method 1
+
+1. Download the project(and uncompress the file if you downloaded a zip version of it), and move into the Project folder. Here is a quick example of what this might look like:
+```bash
+git clone https://gitlab.com/cmsc6950/team1/google-play-store-analysis.git
+cd Project
+```
+1. Install virtualenv to be able to create separate working python environments. This is to prevent damaging any other projects that you may have on your computer
+```bash 
+pip install virtualenv 
+```
+1. Create a new virtual environment
+```bash 
+virtualenv -p python3 .
+source ./bin/activate
+```
+1. Install the required libraries
+```bash
+pip install -r requirements.txt
+```
+1. At this point, you are ready to start enjoying the scripts. To deactivate the virtual environment, you just need to run `deactivate`
+
+## Installation Method 2
+
+1. Download the project(and uncompress the file if you downloaded a zip version of it), and move into the Project folder. Here is a quick example of what this might look like:
+```bash
+git clone https://gitlab.com/cmsc6950/team1/google-play-store-analysis.git
+cd Project
+```
+1. Create a virtual environment with anaconda and activate the new environment
+```bash
+conda create -n NewEnv python=3.7
+conda activate NewEnv
+```
+1. Run the make command
+```
+make
+```
+
+
 # Short Description
 
-All the scripts are inside the Project folder. Within the Folder, you will find an empty _Data_ folder, which is where the processed data will be stored. the _OrigData_ contains the data found in the Kaggle repository as a backup, should you not be able to download the repository from Kaggle, or should the data itself be removed from the Kaggle servers. 
+All the scripts are inside the Project folder. Within the Folder, you will find an empty _Data_ folder, which is where the processed data will be stored. 
+The _OrigData_ contains the data found in the Kaggle repository as a backup, should you not be able to directly download the repository from Kaggle, or should the data itself be removed from the Kaggle servers. 
 
 # Description of Scripts
 
@@ -19,7 +72,7 @@ The following is a list of the scripts included in this project with a brief des
 All of the scripts have a _-h_ or _—-help_ option, which provides more details about their syntax, and additional options.
 
 
-# Important Notes
+# Kaggle Notes
 To be able to download the datasets from Kaggle, it is recommended to use the Kaggle API, which can be found [link](https://github.com/Kaggle/kaggle-api)
 Installing the Kaggle API is as simple as
 `pip install kaggle`
@@ -28,10 +81,6 @@ Or you can download the source code directly from the aboved mentioned link.
 After the kaggle module has been downloaded, you need to set up a kaggle account, and download your credentials to be able to download datasets.  The steps required to download the credentials can be found in the [Kaggle's API github](https://github.com/Kaggle/kaggle-api). However, we have copied the instructions in further sections of this readme file. 
 
 The command to download our data set after you configure your credentials is `kaggle datasets download lava18/google-play-store-apps`, which will download the zip file. 
-
-
-
-
 
 The following sections were copied directly from the Kaggle's API README.md file.
 
