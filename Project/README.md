@@ -23,34 +23,34 @@ We are also assuming that you have already downloaded, or cloned, the repository
 git clone https://gitlab.com/cmsc6950/team1/google-play-store-analysis.git
 cd Project
 ```
-1. Install virtualenv to be able to create separate working python environments. This is to prevent damaging any other projects that you may have on your computer
+2. Install virtualenv to be able to create separate working python environments. This is to prevent damaging any other projects that you may have on your computer
 ```bash 
 pip install virtualenv 
 ```
-1. Create a new virtual environment
+3. Create a new virtual environment
 ```bash 
 virtualenv -p python3 .
 source ./bin/activate
 ```
-1. Install the required libraries
+4. Install the required libraries
 ```bash
 pip install -r requirements.txt
 ```
-1. At this point, you are ready to start enjoying the scripts. To deactivate the virtual environment, you just need to run `deactivate`
+5. At this point, you are ready to start enjoying the scripts. To deactivate the virtual environment, you just need to run `deactivate`
 
-## Installation Method 2
+## Installation Method 2 (With the makefile)
 
 1. Download the project(and uncompress the file if you downloaded a zip version of it), and move into the Project folder. Here is a quick example of what this might look like:
 ```bash
 git clone https://gitlab.com/cmsc6950/team1/google-play-store-analysis.git
 cd Project
 ```
-1. Create a virtual environment with anaconda and activate the new environment
+2. Create a virtual environment with anaconda and activate the new environment
 ```bash
 conda create -n NewEnv python=3.7
 conda activate NewEnv
 ```
-1. Run the make command
+3. Run the make command
 ```
 make
 ```
