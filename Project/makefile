@@ -18,5 +18,3 @@ bashrun:
 download:
 	pipenv run python3 download.py -u -o ./Data
 
-clean:
-	rm ./Data/*.png ./Data/data_for*
