@@ -60,9 +60,6 @@ make
 
 All the scripts are inside the Project folder. Within the Folder, you will find an empty _Data_ folder, which is where the processed data will be stored. 
 The _OrigData_ contains the data found in the Kaggle repository as a backup, should you not be able to directly download the repository from Kaggle, or should the data itself be removed from the Kaggle servers. 
-
-# Description of Scripts
-
 The following is a list of the scripts included in this project with a brief description about their functionality. It is also recommended that you ran the scripts in the order in which they are listed the first you work with this repository.
 
 1. download.py - This script downloads the necessary data. Please read the  *”Important Notes”* section to find out more about certain pre-requisites
