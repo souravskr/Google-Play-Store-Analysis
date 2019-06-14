@@ -27,7 +27,7 @@ cd Project
 ```bash 
 pip install virtualenv 
 ```
-3. Create a new virtual environment
+3. Create and initiate a new virtual environment
 ```bash 
 virtualenv -p python3 .
 source ./bin/activate
@@ -36,7 +36,7 @@ source ./bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-5. At this point, you are ready to start enjoying the scripts. To deactivate the virtual environment, you just need to run `deactivate`
+5. At this point, you are ready to start enjoying the scripts. To deactivate the virtual environment, you just need to run the command `deactivate` from the terminal
 
 ## Installation Method 2 (With the makefile)
 
@@ -50,11 +50,14 @@ cd Project
 conda create -n NewEnv python=3.7
 conda activate NewEnv
 ```
-3. Run the make command
+3. Run the make command. If this command generates an error due to download problems, skip to the next step
 ```
 make
 ```
-
+4. The make file includes an option to use our back-up version of the kaggle dataset (OrigData) 
+```bash
+make bashrun
+```
 
 # Short Description
 
