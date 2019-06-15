@@ -14,6 +14,7 @@ This is a simple script to manually clean the data from the lava18/google-play-s
 It will ONLY work with that data set. 
 """, epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
 parser.add_argument("-a", "--all", action="store_true", help="Performs all the clean-up functions in this script", default=True)
+parser.add_argument("-i", "--input", help="Select the input data file to be cleaned", default='./Data/googleplaystore.csv')
 parser.add_argument("-o", "--output", help="Select the output directory and file name. By default, it stores a file in the current directoy as cleanData.csv", default='./Data/cleanData.csv')
 args = parser.parse_args()
 
@@ -90,8 +91,11 @@ def toFile(output):
     data1.to_csv(output, index=False)
     print("Output file ",output," has been generated")
 
+
+data1 = pd.read_csv(args.input)
+
 if args.all:
-    data1 = pd.read_csv('./Data/googleplaystore.csv' )
+    data1 = pd.read_csv(args.input)
     labelClean()
     remColumns()
     removeRow(10472)

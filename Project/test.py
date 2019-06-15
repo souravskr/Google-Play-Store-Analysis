@@ -17,9 +17,8 @@ def kagglekey():
     except Exception as e:
         print(e)
 
-def add2nums(x,y):
-    try:
-        z = int(x+y)
-        return z
-    except TypeError:
-        print('Please use only integers')
+def testvalkey():
+    assert kagglekey() == True
+
+def testvalkaggle():
+    assert ckkaggle(0) == 1
