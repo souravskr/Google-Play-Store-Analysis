@@ -6,4 +6,5 @@
 bin
 include
 lib
+./Project/__pycache__
 share

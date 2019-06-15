@@ -10,7 +10,7 @@ basesetup: baseclean
 	pipenv run python3 histograms.py -i ./Data/cleanData.csv -d
 
 baseclean: download
-	pipenv run python3 cleandata.py -o ./Data/cleanData.csv
+	pipenv run python3 cleandata.py -o ./Data/cleanData.csv -i ./Data/googleplaystore.csv
 
 bashrun:
 	/bin/bash checkfs.sh
@@ -18,5 +18,3 @@ bashrun:
 download:
 	pipenv run python3 download.py -u -o ./Data
 
-clean:
-	rm ./Data/*.png ./Data/data_for*

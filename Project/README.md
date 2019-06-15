@@ -50,11 +50,11 @@ cd Project
 conda create -n NewEnv python=3.7
 conda activate NewEnv
 ```
-3. Run the make command. If this command generates an error due to download problems, skip to the next step
+3. Run the make command. This should be the last step, but if this command generates an error due to download problems, skip to the next step
 ```
 make
 ```
-4. The make file includes an option to use our back-up version of the kaggle dataset (OrigData) 
+4. OPTIONAL if step 3 fails, the make file includes an option to use our back-up version of the kaggle dataset (OrigData) 
 ```bash
 make bashrun
 ```
