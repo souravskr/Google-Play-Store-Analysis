@@ -6,9 +6,11 @@ The Play Store apps data has enormous potential to drive app-making businesses t
 
 Each app (row) has values for catergory, rating, reviews, size, installs, price, rated, last updated, and version.
 
+Source :[link](https://www.kaggle.com/lava18/google-play-store-apps)
+
 # Google-Play Store Analysis
 
-This project focuses on the analysis of the Play Store data set in Kaggle obtained from the following [link](https://www.kaggle.com/lava18/google-play-store-apps)
+This project focuses on the analysis of the Play Store data set in Kaggle.
 
 We want to use the data to analyze consumer trends and determine which type of apps are the most popular and profitable. 
 
