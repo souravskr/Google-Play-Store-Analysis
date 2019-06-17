@@ -6,15 +6,11 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-numpy = "*"
 pandas = "*"
 kaggle = "*"
-matplotlib = "*"
-requests = "*"
-scipy = "*"
 seaborn = "*"
-bokeh = "*"
 argparse = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7"
