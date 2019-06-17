@@ -45,9 +45,9 @@ fi
 pipenv run python histograms.py -i ./Data/cleanData.csv -d
 if [[ $? ]]; then
 	echo -e "${green}Figures and their corresponding .csv files have been generated in ./Data folder ${normal}"
-	exit 0
 else
 	echo -e "${red}Unable to run histograms.py. Please make sure the virtual environment has been properly set, or that the system has the required dependencies${normal}"
+	exit 1
 fi
 
 pipenv run python post_processing.py
