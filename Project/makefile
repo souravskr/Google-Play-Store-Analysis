@@ -1,6 +1,6 @@
 .PHONY: all newenv basesetup baseclean bashrun download clean
 
-all: newenv baseclean basesetup
+all: newenv baseclean basesetup postprocessing
 
 newenv:
 	pip install --user pipenv
@@ -11,6 +11,9 @@ basesetup: baseclean
 
 baseclean: download
 	pipenv run python3 cleandata.py -o ./Data/cleanData.csv -i ./Data/googleplaystore.csv
+
+postprocessing: baseclean
+	pipenv run python3 post_processing.py
 
 bashrun:
 	/bin/bash checkfs.sh

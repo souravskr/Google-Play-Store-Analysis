@@ -49,7 +49,7 @@ plt.xlabel('Classifications of Applications')
 plt.ylabel('No. of Application')
 plt.title("Genre(Everyone) vs No. of Application Got Updated in 2018")
 fig_1 = chart1.get_figure()
-fig_1.savefig(".Data/counter_plot.png", dpi=300, bbox_inches="tight")
+fig_1.savefig("./Data/counter_plot.png", dpi=300, bbox_inches="tight")
 
 # ***************************************************************************
 
@@ -69,7 +69,7 @@ plt.xlabel('Classifications of Applications')
 plt.ylabel('No. of Application')
 #plt.title("Genre(Everyone) vs No of Application")
 plt.title("Genre(Everyone) vs No of Application")
-chart2.savefig(".Data/cat_plot.png", dpi=300, bbox_inches="tight")
+chart2.savefig("./Data/cat_plot.png", dpi=300, bbox_inches="tight")
 
 
 # ***************************************************************************
@@ -103,7 +103,7 @@ plt.ylabel('Application Classifications')
 plt.title('Android Version vs Application Classifications', fontsize=20)
 plt.subplots_adjust(top=0.9)
 fig_3 = chart3.get_figure()
-fig_3.savefig(".Data/heatmap_1.png", dpi=300, bbox_inches="tight")
+fig_3.savefig("./Data/heatmap_1.png", dpi=300, bbox_inches="tight")
 
 
 # ***************************************************************************
@@ -136,7 +136,7 @@ plt.ylabel('Year')
 plt.title('Applications got Update (in months)', fontsize=20)
 plt.subplots_adjust(top=0.9)
 fig_4 = chart4.get_figure()
-fig_4.savefig(".Data/heatmap_2.png", dpi=300, bbox_inches="tight")
+fig_4.savefig("./Data/heatmap_2.png", dpi=300, bbox_inches="tight")
 
 
 # ***************************************************************************
@@ -158,7 +158,7 @@ chart5.set_xlabel("Application Classification", fontsize=18)
 chart5.set_ylabel("App Rating", fontsize=18)
 chart5.set_ylim(0, 6)
 fig_5 = chart5.get_figure()
-fig_5.savefig(".Data/mean_plot.png", dpi=300, bbox_inches="tight")
+fig_5.savefig("./Data/mean_plot.png", dpi=300, bbox_inches="tight")
 
 
 # ***************************************************************************
@@ -178,7 +178,7 @@ chart6.set_yscale('log')
 chart6.set_xticklabels(chart6.get_xticklabels(),
                        rotation=45, horizontalalignment='right')
 fig_6 = chart6.get_figure()
-fig_6.savefig(".Data/swarm_plot.png", dpi=300, bbox_inches="tight")
+fig_6.savefig("./Data/swarm_plot.png", dpi=300, bbox_inches="tight")
 
 
 # ***************************************************************************
@@ -196,7 +196,7 @@ chart7.set_yscale('log')
 chart7.set_xticklabels(chart7.get_xticklabels(),
                        rotation=45, horizontalalignment='right')
 fig_6 = chart6.get_figure()
-fig_6.savefig(".Data/box_plot.png", dpi=300, bbox_inches="tight")
+fig_6.savefig("./Data/box_plot.png", dpi=300, bbox_inches="tight")
 
 
 # ***************************************************************************
@@ -222,7 +222,7 @@ for item, element in categories:
 
 # Pie plotting
 
-output_file(".Data/pie.html")
+output_file("./Data/pie.html")
 
 x = top_categories
 
