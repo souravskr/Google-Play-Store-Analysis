@@ -3,7 +3,7 @@
 all: newenv baseclean basesetup postprocessing
 
 newenv:
-	pip install --user pipenv
+	pip install pipenv
 	pipenv install
 
 basesetup: baseclean
@@ -18,6 +18,8 @@ postprocessing: baseclean
 bashrun:
 	/bin/bash checkfs.sh
 
-download:
+download: kagglecheck
 	pipenv run python3 download.py -u -o ./Data
 
+kagglecheck:
+	/bin/bash kagglecheck.sh

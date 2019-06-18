@@ -32,7 +32,7 @@ fi
 ls -l ./Data
 
 echo "Beginning data cleaning process"
-python3 cleandata.py -o ./Data/cleanData.csv
+pipenv run python cleandata.py -o ./Data/cleanData.csv
 
 if [[ $? ]]; then
 	echo -e "${green}./Data/cleanData.csv has been properly created${normal}"
@@ -42,10 +42,18 @@ else
 	exit 1
 fi
 
-python3 histograms.py -i ./Data/cleanData.csv -d
+pipenv run python histograms.py -i ./Data/cleanData.csv -d
 if [[ $? ]]; then
 	echo -e "${green}Figures and their corresponding .csv files have been generated in ./Data folder ${normal}"
-	exit 0
 else
 	echo -e "${red}Unable to run histograms.py. Please make sure the virtual environment has been properly set, or that the system has the required dependencies${normal}"
+	exit 1
+fi
+
+pipenv run python post_processing.py
+if [[ $? ]]; then
+	echo -e "${green}Post-Processing done and figures saved in ./Data folder ${normal}"
+	exit 0
+else
+	echo -e "${red}Unable to run post_processing.py. Please make sure the virtual environment has been properly set, or that the system has the required dependencies${normal}"
 fi
