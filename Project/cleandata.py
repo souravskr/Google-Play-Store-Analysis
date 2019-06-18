@@ -21,14 +21,16 @@ args = parser.parse_args()
 
 
 def labelClean():
-    """This function is designed to manually replace the spaces in the labels of the data. This will make the column selection easier
+    """This function is designed to manually replace the spaces in the labels of the data. 
+    This will make enable to easily select columns
     """
     data1.columns= ['app','category','rating','reviews','size','installs','type','price','rated','genres','lastUpdated','appVer','osVer']
     print("Columns have been Renamed to:")
     print(list(data1.columns.values))
 
 def blankClean():
-    """This function is designed to fill any blank spaces with the keyword NA, so that the data is easier to process. 
+    """This function is designed to fill any blank spaces with the keyword NA,
+    so that the data is easier to process. 
     """
     #data1.AppVer = data1.AppVer.fillna('NA')
     #df['Tenant'].replace('', np.nan, inplace=True)
@@ -53,8 +55,9 @@ def blankClean():
 def removeRow(datarow):
     """\
     There is a row in the data set that doesn't have the commas properly set (i.e. it has 12 columns instead of 13). 
-    For this reason, we decided to get rid of this single data point manually.
-    In particular, we need to get rid of sample 10472, as it only has 12 columns, instead of the standard 13."""
+    Because of that, we decided to get rid of this single data point manually.
+    In particular, we need to get rid of sample 10472, as it only has 12 columns, 
+    instead of the standard 13."""
     data1.drop(datarow, inplace=True)
     print("Sample 10472 has been removed due to an error in this particular datapoint")
     #data1.drop(data1.loc[[10472]])
