@@ -15,7 +15,7 @@ baseclean: download
 	pipenv run python3 cleandata.py -o ./Data/cleanData.csv -i ./Data/googleplaystore.csv
 
 download: 
-	pipenv run python3 download.py -u -o ./Data
+	pipenv run python3 download.py -u 
 
 kagglecheck:
 	/bin/bash kagglecheck.sh
