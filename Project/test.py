@@ -1,6 +1,6 @@
 import os
 import sys
-import jitter
+from jitter import plot_jitter, read_file
 
 def ckkaggle(a):
     try: 
@@ -25,6 +25,6 @@ def testvalkaggle():
     assert ckkaggle(0) == 1
 
 def testJitter():
-    observed=plot_jitter(read_file('cleanData.csv'))
+    observed=plot_jitter(read_file('./Data/cleanData.csv'))
     expected=True
     assert observed == expected
