@@ -10,6 +10,8 @@ from bokeh.io import output_file, show
 from bokeh.palettes import Category20c
 from bokeh.plotting import figure
 from bokeh.transform import cumsum
+from bokeh.layouts import column
+from bokeh.transform import jitter
 import operator
 
 
@@ -57,7 +59,7 @@ fig_1.savefig("./Data/counter_plot.png", dpi=300, bbox_inches="tight")
 # Cat Plot  (Genre(Everyone) vs No. of Application Got Updated in 2015 & 2018)
 plt.figure(figsize=(18, 10))
 chart2 = sns.catplot(
-    data=everyone_rated[everyone_rated['Year'].isin([2015, 2018])],
+    data=everyone_rated[everyone_rated['Year'].isin(np.arange(2016, 2019, 1))],
     x='category',
     kind='count',
     palette='Set1',
@@ -68,7 +70,7 @@ chart2.set_xticklabels(rotation=65, horizontalalignment='right')
 plt.xlabel('Classifications of Applications')
 plt.ylabel('No. of Application')
 #plt.title("Genre(Everyone) vs No of Application")
-plt.title("Genre(Everyone) vs No of Application")
+#plt.title("Genre(Everyone) vs No of Application")
 chart2.savefig("./Data/cat_plot.png", dpi=300, bbox_inches="tight")
 
 
@@ -241,3 +243,16 @@ p.wedge(x=0, y=1, radius=0.4,
 p.axis.axis_label = None
 p.axis.visible = False
 p.grid.grid_line_color = None
+
+
+# ***************************************************************************
+
+ratings = sorted(df.rating.unique())
+p2 = figure(plot_width=1600, plot_height=800,
+            title="Application Rating Vs No. of Installations", y_axis_type='log')
+p2.xgrid.grid_line_color = None
+p2.xaxis[0].ticker = ratings
+p2.circle(x=jitter('rating', 0.4), y='installs', size=9, alpha=0.4, source=df)
+p2.xaxis.axis_label = 'Ratings'
+p2.yaxis.axis_label = 'No. of Installations'
+output_file("./Data/jitter.html")

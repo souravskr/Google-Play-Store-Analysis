@@ -29,10 +29,18 @@ def plot_jitter(data_frame):
     jitter_plot.xaxis.axis_label = 'Ratings'
     jitter_plot.yaxis.axis_label = 'No. of Installations'
     output_file("./Data/jitter.html")
-    return show(jitter_plot)
-   
+    show(jitter_plot)
+    return True
 
-plot_jitter(read_file('cleanData.csv'))
+if _name_ == "_main_":
+
+    try:
+        # call file download process
+        plot_jitter(read_file('cleanData.csv'))
+
+
+    except Exception as e:
+        print(e)
 
 
 
