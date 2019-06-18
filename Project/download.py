@@ -16,9 +16,7 @@ parser.add_argument("-o", "--output", help="select the output directory for the 
 args = parser.parse_args()
 odirectory = args.output
 
-if os.path.isdir('./Data/') and odirectory == './Data/':
-    odirectory = './Data'
-else:
+if not os.path.isdir(odirectory):
     odirectory = '.'
 
 if args.uncompressed:

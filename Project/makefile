@@ -1,4 +1,4 @@
-.PHONY: all newenv basesetup baseclean bashrun download clean
+.PHONY: all newenv basesetup baseclean download kagglecheck bashrun
 
 all: newenv baseclean basesetup postprocessing
 
@@ -7,19 +7,18 @@ newenv:
 	pipenv install
 
 basesetup: baseclean
+	pipenv run python3 jitter.py
 	pipenv run python3 histograms.py -i ./Data/cleanData.csv -d
+	pipenv run python3 post_processing.py
 
 baseclean: download
 	pipenv run python3 cleandata.py -o ./Data/cleanData.csv -i ./Data/googleplaystore.csv
 
-postprocessing: baseclean
-	pipenv run python3 post_processing.py
-
-bashrun:
-	/bin/bash checkfs.sh
-
-download: kagglecheck
+download: 
 	pipenv run python3 download.py -u -o ./Data
 
 kagglecheck:
 	/bin/bash kagglecheck.sh
+
+bashrun:
+	/bin/bash checkfs.sh
