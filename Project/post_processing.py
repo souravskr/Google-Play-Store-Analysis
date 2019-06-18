@@ -243,5 +243,6 @@ p.wedge(x=0, y=1, radius=0.4,
 p.axis.axis_label = None
 p.axis.visible = False
 p.grid.grid_line_color = None
+show(p)
 
 
