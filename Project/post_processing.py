@@ -18,7 +18,8 @@ import operator
 # data fetching
 df = pd.read_csv('./Data/cleanData.csv')
 
-# Splitting Year and Month from the lastUpdated column and rounded ratings value
+# Splitting Year and Month from the lastUpdated column
+# Rounded ratings value
 df['Year'] = pd.DatetimeIndex(df['lastUpdated']).year
 df['Month'] = pd.DatetimeIndex(df['lastUpdated']).month
 df['lastUpdated'] = pd.to_datetime(df['lastUpdated'])
@@ -29,7 +30,7 @@ df['rating'] = df['rating'].round(1)
 df['Month'] = df['Month'].apply(lambda x: calendar.month_abbr[x])
 
 
-# Spliting dataframe from 'rated' column where rated is 'Everyone'
+# Seprating dataframe from 'rated' column where rated is 'Everyone'
 everyone_rated_df = df.copy()[df['rated'] == 'Everyone']
 everyone_rated = df.copy()[df['rated'] == 'Everyone']
 everyone_rated_df.set_index('Year', inplace=True)
@@ -144,7 +145,7 @@ fig_4.savefig("./Data/heatmap_2.png", dpi=300, bbox_inches="tight")
 # ***************************************************************************
 
 
-# Mean and standard deviation plot
+# Standard deviation plot and Mean
 byCategory = df.groupby('category')
 plt.figure(figsize=(35, 15))
 std = byCategory.std()
