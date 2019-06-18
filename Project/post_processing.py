@@ -16,7 +16,7 @@ import operator
 
 
 # data fetching
-df = pd.read_csv('cleanData.csv')
+df = pd.read_csv('./Data/cleanData.csv')
 
 # Splitting Year and Month from the lastUpdated column and rounded ratings value
 df['Year'] = pd.DatetimeIndex(df['lastUpdated']).year
@@ -245,14 +245,3 @@ p.axis.visible = False
 p.grid.grid_line_color = None
 
 
-# ***************************************************************************
-
-ratings = sorted(df.rating.unique())
-p2 = figure(plot_width=1600, plot_height=800,
-            title="Application Rating Vs No. of Installations", y_axis_type='log')
-p2.xgrid.grid_line_color = None
-p2.xaxis[0].ticker = ratings
-p2.circle(x=jitter('rating', 0.4), y='installs', size=9, alpha=0.4, source=df)
-p2.xaxis.axis_label = 'Ratings'
-p2.yaxis.axis_label = 'No. of Installations'
-output_file("./Data/jitter.html")

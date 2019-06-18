@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
     try:
         # call file download process
-        plot_jitter(read_file('cleanData.csv'))
+        plot_jitter(read_file('./Data/cleanData.csv'))
 
 
     except Exception as e:
