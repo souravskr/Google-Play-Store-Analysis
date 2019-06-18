@@ -32,7 +32,7 @@ def plot_jitter(data_frame):
     show(jitter_plot)
     return True
 
-if _name_ == "_main_":
+if __name__ == "__main__":
 
     try:
         # call file download process
