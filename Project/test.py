@@ -1,6 +1,7 @@
 import os
 import sys
 from jitter import plot_jitter, read_file
+from download import checkLicense 
 
 def ckkaggle(a):
     try: 
@@ -28,3 +29,9 @@ def testJitter():
     observed=plot_jitter(read_file('./Data/cleanData.csv'))
     expected=True
     assert observed == expected
+
+def testLicense():
+    observed = checkLicense()
+    expected = True
+    assert observed == expected
+
