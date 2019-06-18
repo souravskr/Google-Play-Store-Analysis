@@ -166,13 +166,13 @@ fig_5.savefig("./Data/mean_plot.png", dpi=300, bbox_inches="tight")
 # 'Supported Android Version with No. of Reviews based on Games
 game_data = byCategory.get_group('GAME')
 
-plt.figure(figsize=(15, 8))
+plt.figure(figsize=(10, 8))
 chart6 = sns.swarmplot(data=game_data, x='osVer', y='reviews', hue='rated')
 # chart6.legend_.remove()
 plt.margins(0.02)
-plt.title('Supported Android Version with No. of Reviews based on Games')
-plt.xlabel('Android Version')
-plt.ylabel('No. of Reviews')
+plt.title('Supported Android Version with No. of Reviews based on Games', fontsize=20)
+plt.xlabel('Android Version', fontsize=20)
+plt.ylabel('No. of Reviews', fontsize=20)
 # plt.ylim(0, None)
 chart6.set_yscale('log')
 chart6.set_xticklabels(chart6.get_xticklabels(),
@@ -181,22 +181,22 @@ fig_6 = chart6.get_figure()
 fig_6.savefig("./Data/swarm_plot.png", dpi=300, bbox_inches="tight")
 
 
-# ***************************************************************************
+# ***************************************************************************f
 
 # Box Plot Family Applications with Supported Android Version and their User Reviews
 
 family_data = byCategory.get_group('FAMILY')
-plt.figure(figsize=(35, 15))
+plt.figure(figsize=(15, 8))
 chart7 = sns.boxplot(data=family_data, x='osVer', y='reviews', hue='rated')
 plt.margins(0.02)
-plt.title('Family Applications with Supported Android Version and their User Reviews')
-plt.xlabel('Android Version')
-plt.ylabel('No. of Reviews')
+plt.title('Family Applications with Supported Android Version and their User Reviews', fontsize=20)
+plt.xlabel('Android Version', fontsize=20)
+plt.ylabel('No. of Reviews', fontsize=20)
 chart7.set_yscale('log')
 chart7.set_xticklabels(chart7.get_xticklabels(),
                        rotation=45, horizontalalignment='right')
-fig_6 = chart6.get_figure()
-fig_6.savefig("./Data/box_plot.png", dpi=300, bbox_inches="tight")
+fig_7 = chart7.get_figure()
+fig_7.savefig("./Data/box_plot.png", dpi=300, bbox_inches="tight")
 
 
 # ***************************************************************************
