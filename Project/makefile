@@ -1,9 +1,8 @@
 .PHONY: all newenv basesetup baseclean download kagglecheck bashrun
 
-all: newenv baseclean basesetup postprocessing
+all: newenv baseclean basesetup 
 
 newenv:
-	pip install pipenv
 	pipenv install
 
 basesetup: baseclean
