@@ -153,7 +153,7 @@ chart3.set_yticklabels(chart3.get_yticklabels(),
 
 plt.xlabel('Android Version')
 plt.ylabel('Application Classifications')
-plt.title('Android Version vs Application Classifications', fontsize=20)
+plt.title('Category Wise No. of Apps Based on Android Versions', fontsize=20)
 plt.subplots_adjust(top=0.9)
 fig_3 = chart3.get_figure()
 fig_3.savefig("./Data/heatmap_1.png", dpi=300, bbox_inches="tight")
@@ -253,7 +253,7 @@ fig_7 = chart7.get_figure()
 fig_7.savefig("./Data/box_plot.png", dpi=300, bbox_inches="tight")
 
 
-************************************Avg Size by Category***************************************
+#************************************Avg Size by Category***************************************
 
 from bokeh.models import PrintfTickFormatter
 formatter = PrintfTickFormatter(format='%fM')
