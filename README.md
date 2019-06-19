@@ -21,6 +21,12 @@ The aim of this project is:
     
     3. Presenting the growth of applications from 2016 to 2018.
     
+    4. Comparing different categories of applications based on the Android version.
+    
+    5. Comparing the rates in different kinds of applications.
+    
+    6. Assessing supported Android version with numbers of reviews based on different categories.
+    
 
 # Important Pre-requisites
 
