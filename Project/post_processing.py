@@ -194,8 +194,8 @@ fig_4.savefig("./Data/heatmap_2.png", dpi=300, bbox_inches="tight")
 
 # ***************************************************************************
 
-
 # Standard deviation plot and Mean
+
 byCategory = df.groupby('category')
 plt.figure(figsize=(35, 15))
 std = byCategory.std()
@@ -209,7 +209,7 @@ chart5.set_title(
     "Average Rating & Std. Deviation of Application Categories", fontsize=18)
 chart5.set_xlabel("Application Classification", fontsize=18)
 chart5.set_ylabel("App Rating", fontsize=18)
-chart5.set_ylim(0, 6)
+chart5.set_ylim(0, 5)
 fig_5 = chart5.get_figure()
 fig_5.savefig("./Data/mean_plot.png", dpi=300, bbox_inches="tight")
 
