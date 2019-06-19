@@ -54,10 +54,42 @@ explode = (0, 0, 0.1)
 plt.pie(count_price_list, explode=explode, labels=label, autopct='%1.1f%%',
         shadow=True, startangle=90)
 plt.axis('equal')
-plt.title("Free application percentage in each year")
+plt.title("Free Application Percentage in Each Year")
 fig1.savefig("./Data/pie_plot_freeApp.png", dpi=300, bbox_inches="tight")    
 # ***************************************************************************
+rating_list = []
+mean_reat = []
 
+    # creating and plotting the data for producing thos apps which are rated in each year
+for year in range(2016, 2019, 1):
+    # pdb.set_trace()
+    rating_list.append([])
+
+    for index, rate in enumerate(df["rating"]):
+        if str(df['Year'][index]) == str(year):
+            rating_list[-1].append(rate)
+
+for li in rating_list:
+    sume = 0
+    # pdb.set_trace()
+    for item in li:
+        sume += item
+    mean_reat.append(sume / len(li))
+    
+data = {'2016': mean_reat[0], '2017': mean_reat[1], '2018': mean_reat[2]}
+names = list(data.keys())
+values = list(data.values())
+
+fig, axs = plt.subplots(1, 3, figsize=(9, 3))
+axs[0].bar(names, values)
+plt.tick_params(labelsize=5)
+axs[1].scatter(names, values)
+plt.tick_params(labelsize=5)
+axs[2].plot(names, values)
+plt.tick_params(labelsize=5)
+fig.suptitle('Rating in Each Year')
+fig.savefig("./Data/bar_scater_plot_Rating.png", dpi=300, bbox_inches="tight")
+# ***************************************************************************
 # Char # 1 Genre(Everyone) vs No. of Application in 2018
 plt.figure(figsize=(10, 5))
 chart1 = sns.countplot(
