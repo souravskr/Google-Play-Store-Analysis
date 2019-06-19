@@ -36,7 +36,26 @@ everyone_rated = df.copy()[df['rated'] == 'Everyone']
 everyone_rated_df.set_index('Year', inplace=True)
 everyone_rated_df.sort_index(inplace=True)
 everyone_rated.sort_index(inplace=True)
+# ***************************************************************************
+year_list = [2016, 2017, 2018]
+count_price_list = []
+counter = 0
 
+# creating and plotting the data for producing those apps which were free in each year
+for year in range(2016, 2019, 1):
+    for price in df["price"]:
+        if price == 0:
+            counter += 1
+    count_price_list.append(counter)
+    
+label = "2016", "2017", "2018"
+fig1 = plt.figure(figsize=(10, 5))
+explode = (0, 0, 0.1)
+plt.pie(count_price_list, explode=explode, labels=label, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+plt.axis('equal')
+plt.title("Free application percentage in each year")
+fig1.savefig("./Data/pie_plot_freeApp.png", dpi=300, bbox_inches="tight")    
 # ***************************************************************************
 
 # Char # 1 Genre(Everyone) vs No. of Application in 2018
