@@ -68,8 +68,7 @@ chart2 = sns.catplot(
     aspect=1,
 )
 chart2.set_xticklabels(rotation=65, horizontalalignment='right')
-plt.xlabel('Classifications of Applications')
-plt.ylabel('No. of Application')
+chart2.set_xticklabels('No. of Applications','Classification of Applications')
 #plt.title("Genre(Everyone) vs No of Application")
 #plt.title("Genre(Everyone) vs No of Application")
 chart2.savefig("./Data/cat_plot.png", dpi=300, bbox_inches="tight")
