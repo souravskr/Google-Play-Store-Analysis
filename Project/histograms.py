@@ -32,7 +32,7 @@ This programs is designed to generate basic graphs with the cleandata comparing 
 It is also recommended to use TkAgg matplotlib background to make a beautiful. 
 """, epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
 
-parser.add_argument("-i", "--input", help="Select the input directory and file name. By default, it searches for cleanData.csv in the current directoy", default='cleanData.csv')
+parser.add_argument("-i", "--input", help="Select the input directory and file name. By default, it searches for cleanData.csv in the current directoy", default='./Data/cleanData.csv')
 parser.add_argument("-d", "--data", help="Save the figure and its corresponding data", action="store_true", default=False)
 parser.add_argument("-g", "--graphs", help="Enable this option to display the graphs after the figures have been processed", action="store_true", default=False)
 
