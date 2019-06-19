@@ -9,11 +9,18 @@ Each app (row) has values for catergory, rating, reviews, size, installs, price,
 `Source`: https://www.kaggle.com/lava18/google-play-store-apps
 
 
-# Google-Play Store Analysis
+# Objectives of Google-Play Store Analysis
 
 This project focuses on the analysis of the Play Store data set in Kaggle.
 
-We want to use the data to analyze consumer trends and determine which type of apps are the most popular and profitable. 
+The aim of this project is:
+
+    1. Using the data to analyze consumer trends and determine which type of apps are the most popular and profitable. 
+    
+    2. Classifying applications based on their categories.
+    
+    3. Presenting the growth of applications from 2016 to 2018.
+    
 
 # Important Pre-requisites
 
