@@ -1,4 +1,3 @@
-
 # Libraries to read optional parameters
 import argparse
 import os
@@ -27,8 +26,10 @@ except:
 
 
 parser = argparse.ArgumentParser(description="""\
-IMPORTANT: Remember to run cleandata.py before running this script. It will not work otherwise.
-This programs is designed to generate basic graphs with the cleandata comparing the number of samples. It is also recommended to use TkAgg matplotlib background to generate prettier images. 
+IMPORTANT: Remember to run cleandata.py before running this script.
+It will not work otherwise without its running.
+This programs is designed to generate basic graphs with the cleandata comparing the number of samples.
+It is also recommended to use TkAgg matplotlib background to make a beautiful. 
 """, epilog="Group 1 - CMSC6950 - Memorial University of Newfoundland")
 
 parser.add_argument("-i", "--input", help="Select the input directory and file name. By default, it searches for cleanData.csv in the current directoy", default='cleanData.csv')
@@ -93,9 +94,9 @@ def toFile(dataframe):
         print("Output file ",output," has been generated")
 
 def printdf(dataframe):
-    print("#######################################################################################")
+    print("##########################################################################################")
     print(dataframe)
-    print("#######################################################################################")
+    print("##########################################################################################")
 
 def graphdf(dataframe):
     dflabel = str(dataframe.columns[0])
