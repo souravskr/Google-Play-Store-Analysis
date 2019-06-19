@@ -240,10 +240,11 @@ fig_6.savefig("./Data/swarm_plot.png", dpi=300, bbox_inches="tight")
 
 family_data = byCategory.get_group('FAMILY')
 plt.figure(figsize=(15, 8))
-chart7 = sns.boxplot(data=family_data, x='osVer', y='reviews', hue='rated')
+chart7 = sns.boxplot(data=family_data, x='rated', y='reviews')
+# chart7 = sns.boxplot(data=family_data, x='osVer', y='reviews', hue='rated')
 plt.margins(0.02)
-plt.title('Family Applications with Supported Android Version and their User Reviews', fontsize=20)
-plt.xlabel('Android Version', fontsize=20)
+plt.title('Family Apps with Recommended User Type and User Reviews', fontsize=20)
+plt.xlabel('Recommended User Type', fontsize=20)
 plt.ylabel('No. of Reviews', fontsize=20)
 chart7.set_yscale('log')
 chart7.set_xticklabels(chart7.get_xticklabels(),
@@ -252,7 +253,7 @@ fig_7 = chart7.get_figure()
 fig_7.savefig("./Data/box_plot.png", dpi=300, bbox_inches="tight")
 
 
-# ************************************Avg Size by Category***************************************
+************************************Avg Size by Category***************************************
 
 from bokeh.models import PrintfTickFormatter
 formatter = PrintfTickFormatter(format='%fM')
