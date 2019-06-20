@@ -3,7 +3,6 @@
 all: newenv baseclean basesetup 
 
 newenv:
-	pip install pipenv
 	pipenv install
 
 basesetup: baseclean
