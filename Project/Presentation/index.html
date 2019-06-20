@@ -278,67 +278,6 @@ Group 1 - CMSC6950 - Memorial University of Newfoundland
 ---
 <img src="./bar_scatter_plot_rating.png" alt="" id="slide_img10" width="100%" height="100%">
 
-
-# Installation
-```bash
-Project/
-├── checkfs.sh # Plan B - if download doesn't work
-├── Data/
-├── makefile # For installation Method 2
-├── OrigData/ # Plan B - if download doesn't work
-│    ├── googleplaystore.csv
-│    ├── googleplaystore_user_reviews.csv
-│    └── license.txt
-├── Pipfile # For installation Method 2
-├── Pipfile.lock # For installation Method 2
-├── README.md # Instructions for Installation
-└── requirements.txt # For installation Method 1
-```
----
-
-# The makefile
-```bash
-.PHONY: all newenv basesetup baseclean bashrun download clean
-
-all: newenv baseclean basesetup
-
-newenv:
-	pip install --user pipenv
-	pipenv install
-
-basesetup: baseclean
-	pipenv run python3 histograms.py -i ./Data/cleanData.csv -d
-
-baseclean: download
-	pipenv run python3 cleandata.py -o ./Data/cleanData.csv
-
-bashrun:
-	/bin/bash checkfs.sh
-
-download:
-	pipenv run python3 download.py -u -o ./Data
-```
-
-
----
-# Python Scripts
-
-download.py  == Downloads data directly from Kaggle
-```bash
-download.py [-h] [-u] [-o OUTPUT]```
-
-cleandata.py == Cleans the data so that it can be processed
-```bash
-cleandata.py [-h] [-a] [-o OUTPUT]```
-
-histograms.py == Generates a preview of the Data
-```bash
-histograms.py [-h] [-i INPUT] [-d] [-g] [-v | -q] [-s SPECIFIC | -a]```
-
-test.py == Tests the Kaggle API
-```bash
-py.test test.py```
-
 ---
 
 | Name        | Worked on           | 
@@ -353,7 +292,6 @@ py.test test.py```
 
 class: center, middle
 # Thank you
-
 
 
     </textarea>
