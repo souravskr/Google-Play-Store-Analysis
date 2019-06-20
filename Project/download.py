@@ -20,6 +20,9 @@ try:
     args = parser.parse_args()
     odirectory = args.output
     notcompressed = args.uncompressed
+    helpOption = args.help
+    if helpOption == False or helpOption == None or helpOption == '':
+        helpOption = False
 except:
     pass
 
@@ -46,7 +49,7 @@ def checkLicense():
 
 if __name__ == "__main__":
     try:
-        if not args.h:
+        if helpOption == False:
             try:
                 downloadData()
                 
