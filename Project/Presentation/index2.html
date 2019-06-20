@@ -93,14 +93,75 @@ bashrun:
 
 ---
 # download.py
+```bash
+usage: download.py [-h] [-u] [-o OUTPUT]
 
+This is a simple script to download Kaggle datasets. It is important to have a
+kaggle account for the script to work.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -u, --uncompressed    Downloads the compressed files from Kaggle
+  -o OUTPUT, --output OUTPUT
+                        select the output directory for the files
+
+
+```
 
 ---
 # cleandata.py
+```bash
+usage: cleandata.py [-h] [-a] [-i INPUT] [-o OUTPUT]
 
+This is a simple script to manually clean the data from the lava18/google-
+play-store-apps dataset from Kaggle. It will ONLY work with that data set.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -a, --all             Performs all the clean-up functions in this script
+  -i INPUT, --input INPUT
+                        Select the input data file to be cleaned
+  -o OUTPUT, --output OUTPUT
+                        Select the output directory and file name. By default,
+                        it stores a file in the current directoy as
+                        cleanData.csv
+
+Group 1 - CMSC6950 - Memorial University of Newfoundland
+
+```
 
 ---
 # histograms.py
+```bash
+usage: histograms.py [-h] [-i INPUT] [-d] [-g] [-v | -q] [-s SPECIFIC | -a]
+
+IMPORTANT: Remember to run cleandata.py before running this script. It will
+not work otherwise without its running. This programs is designed to generate
+basic graphs with the cleandata comparing the number of samples. It is also
+recommended to use TkAgg matplotlib background to make a beautiful.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Select the input directory and file name. By default,
+                        it searches for cleanData.csv in the current directoy
+  -d, --data            Save the figure and its corresponding data
+  -g, --graphs          Enable this option to display the graphs after the
+                        figures have been processed
+  -v, --verbose         increases verbosity of the output
+  -q, --quiet           reduces verbosity of the output
+  -s SPECIFIC, --specific SPECIFIC
+                        specify which graph you wish to regenerate. The
+                        options are: category, reviews, rating, size,
+                        installs, price, rated, lastUpdated, osVer, and
+                        summary. Using a different keyword, or not filling in
+                        an option, will not do anything.
+  -a, --all             same as simultaneously activating flags -v, -d, and
+                        -g. This option will override any other flags
+
+Group 1 - CMSC6950 - Memorial University of Newfoundland
+
+```
 
 ---
 # post_processing.py
@@ -110,6 +171,14 @@ bashrun:
 
 ---
 # test.py
+
+1. def testvalkey() == Confirms existance of Kaggle Key
+
+2. def testvalkaggle() == tests kaggle API
+
+3. def testJitter() == tests jitter.py
+
+4. def testLicense() == tests download.py
 
 ---
 # Bonus Scripts: Shell Scripts
