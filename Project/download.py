@@ -6,7 +6,6 @@ import kaggle
 
 odirectory = '.'
 notcompressed = False
-
 try:
     parser = argparse.ArgumentParser(description="""\
     This is a simple script to download Kaggle datasets. 
@@ -21,8 +20,6 @@ try:
     odirectory = args.output
     notcompressed = args.uncompressed
     helpOption = args.help
-    if helpOption == False or helpOption == None or helpOption == '':
-        helpOption = False
 except:
     pass
 
@@ -49,11 +46,7 @@ def checkLicense():
 
 if __name__ == "__main__":
     try:
-        if helpOption == False:
-            try:
-                downloadData()
+        downloadData()
                 
-            except Exception as e:
-                print(e)
     except Exception as e:
-        pass
+        print(e)
