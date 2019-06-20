@@ -46,7 +46,11 @@ def checkLicense():
 
 if __name__ == "__main__":
     try:
-        downloadData()
-        
+        if not args.h:
+            try:
+                downloadData()
+                
+            except Exception as e:
+                print(e)
     except Exception as e:
-        print(e)
+        pass
