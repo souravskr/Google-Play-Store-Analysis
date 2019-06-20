@@ -165,7 +165,7 @@ fig_3.savefig("./Data/heatmap_1.png", dpi=300, bbox_inches="tight")
 # ***************************************************************************
 
 
-# Heatmap Applications got Update (in months)
+# Heatmap Applications Got Update (in months)
 by_category = (df
                .groupby('Year')
                .filter(lambda x: len(x) > 0)
@@ -189,7 +189,7 @@ chart4.set_yticklabels(chart4.get_yticklabels(),
 
 plt.xlabel('Month')
 plt.ylabel('Year')
-plt.title('Applications got Update (in months)', fontsize=20)
+plt.title('Applications Got Update (in months)', fontsize=20)
 plt.subplots_adjust(top=0.9)
 fig_4 = chart4.get_figure()
 fig_4.savefig("./Data/heatmap_2.png", dpi=300, bbox_inches="tight")
