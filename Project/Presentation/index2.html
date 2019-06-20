@@ -30,18 +30,6 @@ class: center, middle
 # Code Slides
 
 ---
-# Project Objectives
-* To analyze the Play Store App data
-
-* To determine app trends
-
-* To compare the year to year application history
-
-* To visualize the which application category supports which version of OS
-
-* To inspect which month of the year, the applications got their last update most
-
----
 
 # Installation
 ```bash
@@ -62,53 +50,73 @@ Project/
 
 # The makefile
 ```bash
-.PHONY: all newenv basesetup baseclean bashrun download clean
+.PHONY: all newenv basesetup baseclean download kagglecheck bashrun
 
-all: newenv baseclean basesetup
+all: newenv baseclean basesetup 
 
 newenv:
-	pip install --user pipenv
-	pipenv install
+        pip install --user pipenv
+        pipenv install
 
 basesetup: baseclean
-	pipenv run python3 histograms.py -i ./Data/cleanData.csv -d
+        pipenv run python3 jitter.py
+        pipenv run python3 histograms.py -i ./Data/cleanData.csv -d                                                                                                                
+        pipenv run python3 post_processing.py                                                                                                                                      
+baseclean: download                                                                                                                                                                
+        pipenv run python3 cleandata.py -o ./Data/cleanData.csv -i ./Data/googleplaystore.csv                                                                                      
+download: 
+        pipenv run python3 download.py -u 
 
-baseclean: download
-	pipenv run python3 cleandata.py -o ./Data/cleanData.csv
+kagglecheck:
+        /bin/bash kagglecheck.sh
 
 bashrun:
-	/bin/bash checkfs.sh
+        /bin/bash checkfs.sh
 
-download:
-	pipenv run python3 download.py -u -o ./Data
 ```
 
 
 ---
-# Python Scripts
+# The Scripts
 
-download.py  == Downloads data directly from Kaggle
-```bash
-download.py [-h] [-u] [-o OUTPUT]```
+1. download.py  == Downloads data directly from Kaggle
 
-cleandata.py == Cleans the data so that it can be processed
-```bash
-cleandata.py [-h] [-a] [-o OUTPUT]```
+2. cleandata.py == Cleans the data so that it can be processed
 
-histograms.py == Generates a preview of the Data
-```bash
-histograms.py [-h] [-i INPUT] [-d] [-g] [-v | -q] [-s SPECIFIC | -a]```
+3. histograms.py == Generates a preview of the Data
 
-test.py == Tests the Kaggle API
-```bash
-py.test test.py```
+4. post_processing.py == Generates 
+
+5. jitter.py == Generates the jitter plots
+
+6. test.py == Tests the download procedures
+
+---
+# download.py
 
 
 ---
+# cleandata.py
 
-class: center, middle
-# Thank you
 
+---
+# histograms.py
+
+---
+# post_processing.py
+
+---
+# jitter.py
+
+---
+# test.py
+
+---
+# Bonus Scripts: Shell Scripts
+
+* checkfs.sh == alternative to make
+
+* kagglecheck.sh == Generates a kaggle key
 
 
     </textarea>
