@@ -3,10 +3,9 @@ import os
 import requests
 import argparse
 import kaggle
+odirectory='./Data'
 
-odirectory = '.'
-notcompressed = False
-try:
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="""\
     This is a simple script to download Kaggle datasets. 
     It is important to have a kaggle account for the script to work.
@@ -19,10 +18,14 @@ try:
     args = parser.parse_args()
     odirectory = args.output
     notcompressed = args.uncompressed
-    helpOption = args.help
-except:
-    pass
 
+try:
+    odirectory = args.output
+    notcompressed=args.uncompressed
+    print(notcompressed)
+except Exception as e:
+    print(e)
+    notcompressed=False
 
 if not os.path.isdir(odirectory):
     odirectory = '.'
@@ -43,10 +46,8 @@ def checkLicense():
     else:
         return 'Kaggle\'s data license was not found'
 
-
 if __name__ == "__main__":
     try:
         downloadData()
-                
     except Exception as e:
         print(e)

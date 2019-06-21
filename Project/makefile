@@ -1,12 +1,13 @@
 .PHONY: all newenv basesetup baseclean download kagglecheck bashrun
 
-all: newenv baseclean basesetup 
+all: newenv baseclean basesetup test
 
 newenv:
 	pipenv install
 
 basesetup: baseclean
 	pipenv run python3 jitter.py
+	pipenv run python3 jitter2.py
 	pipenv run python3 histograms.py -i ./Data/cleanData.csv -d
 	pipenv run python3 post_processing.py
 
@@ -22,5 +23,5 @@ kagglecheck:
 bashrun:
 	/bin/bash checkfs.sh
 
-test:
+test: download
 	pipenv run py.test test.py
