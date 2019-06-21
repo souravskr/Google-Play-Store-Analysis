@@ -256,7 +256,7 @@ fig_7 = chart7.get_figure()
 fig_7.savefig("./Data/box_plot.png", dpi=300, bbox_inches="tight")
 
 
-#************************************Avg Size by Category***************************************
+# ************************************Avg Size by Category***************************************
 
 # from bokeh.models import PrintfTickFormatter
 # formatter = PrintfTickFormatter(format='%fM')
