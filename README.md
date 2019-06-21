@@ -33,12 +33,14 @@ The aim of this project is:
 1. Python 3.7
 2. Pip (usually installed by default with Python 3)
 3. A Kaggle account ([More Information can be found here](https://www.kaggle.com/), and details about the configuration of the Kaggle certificates can be found in the _Kaggle Notes_ section contained within this README.md file ) 
+    * If you have trouble obtaining your own key, you can also run `bash kagglecheck.sh`. This script will generate a key for you to use and be able to download the necessary data
 
 
 # Installation 
 
 There are 2 recommended ways to set up your environment to run the scripts, both of which will be described here.
 We are also assuming that you have already downloaded, or cloned, the repository, and have moved into the _Project_ directory.
+
 
 ## Installation Method 1
 
@@ -89,11 +91,28 @@ All the scripts are inside the Project folder. Within the Folder, you will find 
 The _OrigData_ contains the data found in the Kaggle repository as a backup, should you not be able to directly download the repository from Kaggle, or should the data itself be removed from the Kaggle servers. 
 The following is a list of the scripts included in this project with a brief description about their functionality. It is also recommended that you ran the scripts in the order in which they are listed the first you work with this repository.
 
-1. download.py - This script downloads the necessary data. Please read the  *”Important Notes”* section to find out more about certain pre-requisites
+1. download.py - This script downloads the necessary data. Please read the  *”Kaggle Notes”* section to find out more about the kaggle pre-requisites
 2. cleandata.py - After the data has been downloaded, and unzipped, this script will get rid of unnecessary fields, filter out erronous data points, and fill empty cells with the ‘NA’ keyword
-3. histograms.py - This script provides a preview of the data. It graphs each of the attributes against the number of apps. 
+3. histograms.py - This script provides a preview of the data. It graphs each of the attributes against the number of apps, and will also create a csv file corresponding to each of the files. 
 * These 3 scripts have a _-h_ or _—-help_ option, which provides more details about their syntax, and additional options.
-4. post\_processing.py - This script generates more advance figures from the data. 
+4. jitter.py and jitter2.py generate interactive graphs of the same type, but with different data.
+5. post\_processing.py - This script generates more advanced, and multicolored, figures from the data.
+6. *test.py* - This is a script to test some of the functionality from the scripts. To run it, just type `pipenv run py.test test.py` 
+* othergraph.py - requires Geoview which is an anaconda specific package, and therefore cannot be ran from the makefile or with pipenv.
+
+# Member's Contributions
+
+* Aida:  Latex, Presentation, README.md, jitter2.py & avg\_size\_category.py
+
+* Carlos: makefile, shell scripts, download.py, cleandata.py, histogram.py, post_processing.py, test.py presentation, README.md, requirements.txt, .gitignore, OrigData. 
+
+* Sourav: Coded with Jupyter Notebook for Project\_ver\_1.ipynb, post\_processing.py & jitter.py. (Bokeh Pie and jitter plot, Box plot, Mean plot, Count Plot, Cat Plot, Heatmap)
+
+* Fatemeh: Latex, Presentation, README.md, Pie plot, jitter2.py & othergraph.py(avg\_size\_category graph)
+
+# Backup
+
+As an additional backup, the original data has been included in the OrigData folder. The `checkfs.sh` will copy this data to the Data folder and run the scripts cleandata.py, histograms.py, jitter.py, jitter2.py and post_processing.py. *This can also be used as a back up should you have offline troubles.*
 
 # Kaggle Notes
 To be able to download the datasets from Kaggle, it is recommended to use the Kaggle API, which can be found [link](https://github.com/Kaggle/kaggle-api)
