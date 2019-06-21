@@ -156,7 +156,7 @@ chart3.set_yticklabels(chart3.get_yticklabels(),
 
 plt.xlabel('Android Version')
 plt.ylabel('Application Classifications')
-plt.title('Category Wise No. of Apps Based on Android Versions', fontsize=20)
+plt.title('Category Vs. No. of Apps Based on Android Versions', fontsize=20)
 plt.subplots_adjust(top=0.9)
 fig_3 = chart3.get_figure()
 fig_3.savefig("./Data/heatmap_1.png", dpi=300, bbox_inches="tight")
