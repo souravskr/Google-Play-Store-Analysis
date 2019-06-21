@@ -74,15 +74,11 @@ cd Project
 conda create -n NewEnv python=3.7
 conda activate NewEnv
 ```
-3. Use conda to install geoviews. Geoviews is an acandonda specific, so it can only be installed this way
-```
-conda install geoviews
-```
-4. Run the make command. This should be the last step, but if this command generates an error due to download problems, skip to the next step
+3. Run the make command. This should be the last step, but if this command generates an error due to download problems, skip to the next step
 ```
 make
 ```
-5. OPTIONAL if step 3 fails, the make file includes an option to use our back-up version of the kaggle dataset (OrigData) 
+4. OPTIONAL if step 3 fails, the make file includes an option to use our back-up version of the kaggle dataset (OrigData) 
 ```bash
 make bashrun
 ```
@@ -96,9 +92,8 @@ The following is a list of the scripts included in this project with a brief des
 1. download.py - This script downloads the necessary data. Please read the  *”Important Notes”* section to find out more about certain pre-requisites
 2. cleandata.py - After the data has been downloaded, and unzipped, this script will get rid of unnecessary fields, filter out erronous data points, and fill empty cells with the ‘NA’ keyword
 3. histograms.py - This script provides a preview of the data. It graphs each of the attributes against the number of apps. 
-
-All of the scripts have a _-h_ or _—-help_ option, which provides more details about their syntax, and additional options.
-
+* These 3 scripts have a _-h_ or _—-help_ option, which provides more details about their syntax, and additional options.
+4. post\_processing.py - This script generates more advance figures from the data. 
 
 # Kaggle Notes
 To be able to download the datasets from Kaggle, it is recommended to use the Kaggle API, which can be found [link](https://github.com/Kaggle/kaggle-api)
