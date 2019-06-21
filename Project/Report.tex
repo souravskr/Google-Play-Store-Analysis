@@ -16,14 +16,14 @@ Yazdanpanah, Fatemeh ( fyazdanpanah)} \date{June 2019}
 
 \maketitle
 
-\section*{Introduction to data}
+\section*{1. Introduction to data}
 
 While many public datasets (on Kaggle and the like) provide Apple App Store data, there are not many counterpart datasets available for Google Play Store apps anywhere on the web.On digging deeper, it can be found out that iTunes App Store page deploys a nicely indexed appendix-like structure to allow for simple and easy web scraping. On the other hand, Google Play Store uses sophisticated modern-day techniques (like dynamic page load) using JQuery making scraping more challenging.
 The Play Store apps data has enormous potential to drive app-making businesses to success. Actionable insights can be drawn for developers to work on and capture the Android market!
 Each app (row) has values for catergory, rating, reviews, size, installs, price, rated, last updated, and version.
 
 
-\section*{Objectives of Google-Play Store Analysis}
+\section*{2. Objectives of Google-Play Store Analysis}
 This project focuses on the analysis of the Play Store data set in Kaggle.
 The aim of this project is:
 \begin{itemize}
@@ -35,8 +35,8 @@ The aim of this project is:
 \item Assessing supported Android version with numbers of reviews based on different categories.\\
 \end{itemize}
 
-\section*{Categories of Applications}
-In our dataset we have more than 9000 applications. The pie chart represents top 20 application categories based on application number. The top number of application is belonged to family. The following high number of applications are related to Game, Tools, and Business respectively. The result indicates that more users are interested in the four top categories and most of the developers put more emphasis on improving them.
+\section*{3. Top 20 Applications categories Based on the Application Numbers}
+In our dataset we have more than 9000 applications. The pie chart (Figure ~\ref{fig:1}) represents top 20 application categories based on application number. The top number of application is belonged to family. The following high number of applications are related to Game, Tools, and Business respectively. The result indicates that more users are interested in the four top categories and most of the developers put more emphasis on improving them.
 \begin{itemize}
 \item
   Family is included of 1832  numbers of applications.
@@ -58,44 +58,51 @@ This result shows that the major numbers of applications is related to Family.
 \label{fig:1}
 \end{figure}
 
-\section*{Growth of Application Numbers from 2016-2018}
-According to bar chart, (Figure 2), we can see the growth of application numbers which are categorized in different years. Most of the applications have grown in all three years from 2016-2018.
+\section*{4. Growth of Application Numbers from 2016-2018}
+According to bar chart, (Figure ~\ref{fig:2} ), we can see the growth of application numbers which are categorized in different years. Most of the applications have grown in all three years from 2016-2018.
 Family reached to the top of growth around 200, 400, and 800 in 2016, 2017, and 2018 respectively. The following highest application number in all three years are belonged to Tools and Business.
 
 \begin{figure}
 \centering
-\includegraphics[width=15cm,height=7cm]{pic/cat_plot}
+\includegraphics[width=10cm,height=7cm]{pic/cat_plot}
 \caption{Growth of Application Numbers from 2016-2018} 
 \label{fig:2}
 \end{figure}	
 
-\section*{update}
-\subsection*{Number of Application Update}
-From the survey carried out, Family, Tools, and Business have the most updated numbers of applications which reaches around 800 in 2018. While, Dating and Comics have less updated compared to others. (Figure 3)  
+\section*{5. Application Update}
+\subsection*{5.1 Number of Application Update}
+From the survey carried out, Family, Tools, and Business have the most updated numbers of applications which reaches around 800 in 2018. While, Dating and Comics have less updated compared to others. (Figure ~\ref{fig:3})  
 \begin{figure}
 \centering
-\includegraphics[width=10cm,height=10cm]{pic/counter_plot}
-\caption{Gnre (Everyone) vs No. of Application Got Updated in 2018}
+\includegraphics[width=8cm,height=8cm]{pic/counter_plot}
+\caption{Genre (Everyone) Vs. Number of Application Got Updated in 2018 }
 \label{fig:3}
 \end{figure}
 
-\subsection*{Different Months of Application Update}
-This figure represents the update of application based on the differences between months and years. The highest rate of update is belonged to month of July in 2018. As shown in Figure 3, in 2018, there is a great trend of update compared to other years. (Figure 4)
+\subsection*{5.2 Different Months of Application Update}
+This figure (Figure ~\ref{fig:4}) represents the update of application based on the differences between months and years. The highest rate of update is belonged to month of July in 2018. As shown in figure ~\ref{fig:4}, in 2018, there is a great trend of update compared to other years.
 \begin{figure}
 \centering
-\includegraphics[width=10cm,height=10cm]{pic/heatmap_2}
+\includegraphics[width=9cm,height=7cm]{pic/heatmap_2}
 \caption{Application Got Update (in Month)}
 \label{fig:4}
 \end{figure}
 
-\section*{Android Version}
-\subsection*{Supported Android Version with No. reviews based on Game}
-This graph describes the supported Android version with number of reviews based on game.
+\section*{6. Android Version}
+\subsection*{6.1 Supported Android Version with No. Reviews Based on Game}
+Figure ~\ref{fig:5} describes the supported Android version with number of reviews based on game.
 \begin{itemize}
 \item The majority number of reviews are belonged to version of 4.1, 4.0.3, 2.3, 4.0, 4.4 and up.\\
 \item Among Everyone (orange dot) and Teen (red dot), 4.1,4.0.3, and 2.3 are seen significantly.\\
 \item Some versions which are less than two have no review as shown in the figure.\\
 \end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=10cm,height=7cm]{pic/swarm_plot}
+\caption{Supported Android Version with No. reviews based on Game}
+\label{fig:5}
+\end{figure}
 
 \subsection*{6.2 Category Vs. Number of Applications Based on Android Versions}
 As we can see in figure ~\ref{fig:12}, there is a relationship between application classification and version of Android. The version of 4.1 and up has the highest usage in Family applications which is reached to above 400. Additionally, it can be seen that the Family category has the most diversity of version compare with other categories. Version 5.0-6.0, 5.0-7.1.1, and 5.0-8.0 has their lowest usage among all applications.
@@ -106,19 +113,12 @@ As we can see in figure ~\ref{fig:12}, there is a relationship between applicati
 \label{fig:12}
 \end{figure}
 
+\section*{7. Application Rating}
+\subsection*{7.1 Average Rating and Std. Devision of Application Categories}
+Figure ~\ref{fig:6} indicates the average rating of application categories. This figure is trying to compare rating of different applications. In fact all the applications have the same range of rating above 4. The rating of all application are so close to each other in all categories.
 \begin{figure}
 \centering
-\includegraphics[width=10cm,height=10cm]{pic/swarm_plot}
-\caption{Supported Android Version with No. reviews based on Game}
-\label{fig:5}
-\end{figure}
-
-\section*{Rating}
-\subsection*{Average Rating and Std. Devision of Application Categories}
-This figure indicates the average rating of application categories. This figure is trying to compare rating of different applications. In fact all the applications have the same range of rating above 4. The rating of all application are so close to each other in all categories.
-\begin{figure}
-\centering
-\includegraphics[width=15cm,height=7cm]{pic/mean_plot}
+\includegraphics[width=10cm,height=7cm]{pic/mean_plot}
 \caption{Average Rating and Std. Devision of Application Categories} 
 \label{fig:6}
 \end{figure}
@@ -155,7 +155,6 @@ The bar chart (Figure ~\ref{fig:9}) represents the average size of applications.
 \caption{Avg. Size by Categories} 
 \label{fig:9}
 \end{figure}
-
 
 \section*{9. Free Applications}
 \subsection*{9.1 Free Applications Percentage in Each Year}
