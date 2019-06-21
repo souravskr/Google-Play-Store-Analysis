@@ -6,16 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-pandas = "*"
 kaggle = "*"
-seaborn = "*"
-argparse = "*"
 matplotlib = "*"
+seaborn = "*"
+pandas = "*"
 bokeh = "*"
-numpy = "*"
-scipy = "*"
+argparse = "*"
 holoviews = "*"
-geoviews = "*"
+cycler = "*"
 
 [requires]
 python_version = "3.7"

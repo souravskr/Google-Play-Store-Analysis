@@ -21,3 +21,6 @@ kagglecheck:
 
 bashrun:
 	/bin/bash checkfs.sh
+
+test:
+	pipenv run py.test test.py
